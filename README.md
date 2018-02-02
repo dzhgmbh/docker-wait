@@ -43,7 +43,7 @@ HEALTHCHECK --interval=1s --timeout=90s \
 The script can be directly downloaded into a Docker image via Dockerfile's `ADD` instruction:
 
 ```
-ADD https://raw.githubusercontent.com/dzhgmbh/docker-wait/master/wait /usr/local/bin/
+ADD https://raw.githubusercontent.com/dzhgmbh/docker-wait/1.0/wait /usr/local/bin/
 RUN chmod +x /usr/local/bin/wait
 ```
 
@@ -54,7 +54,7 @@ Dockerfile:
 FROM mysql:5.5
 
 COPY healthcheck /usr/local/bin/
-ADD https://raw.githubusercontent.com/dzhgmbh/docker-wait/master/wait /usr/local/bin/
+ADD https://raw.githubusercontent.com/dzhgmbh/docker-wait/1.0/wait /usr/local/bin/
 RUN chmod +x /usr/local/bin/wait
 
 HEALTHCHECK --interval=1s --timeout=90s --retries=3 \
