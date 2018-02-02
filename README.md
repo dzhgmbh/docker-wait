@@ -38,3 +38,25 @@ Imagine we have a health check script `check.sh` and we want to have a regular i
 HEALTHCHECK --interval=1s --timeout=90s \
     CMD ["wait", "60", "check.sh"]
 ```
+
+## Installation
+The script can be directly downloaded into a Docker image via Dockerfile's `ADD` instruction:
+
+```
+ADD https://raw.githubusercontent.com/dzhgmbh/docker-wait/master/wait /usr/local/bin/
+RUN chmod +x /usr/local/bin/wait
+```
+
+## Full example
+Dockerfile:
+
+```
+FROM mysql:5.5
+
+COPY healthcheck /usr/local/bin/
+ADD https://raw.githubusercontent.com/dzhgmbh/docker-wait/master/wait /usr/local/bin/
+RUN chmod +x /usr/local/bin/wait
+
+HEALTHCHECK --interval=1s --timeout=90s --retries=3 \
+    CMD ["wait", "60", "healthcheck"]
+```
