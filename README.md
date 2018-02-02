@@ -37,3 +37,4 @@ Imagine we have a health check script `check.sh` and we want to have a regular i
 ```
 HEALTHCHECK --interval=1s --timeout=90s \
     CMD ["wait", "60", "check.sh"]
+```
