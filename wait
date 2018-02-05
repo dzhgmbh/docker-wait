@@ -1,6 +1,6 @@
 #!/bin/sh
 
-semaphore=/tmp/container-initialized
+semaphore=/tmp/$(awk -F/ '{ print $NF }' /proc/1/cpuset)-initialized
 interval=$1
 
 shift
